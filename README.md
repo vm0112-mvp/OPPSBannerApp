@@ -1,47 +1,52 @@
-public class OOPSBannerApp {
+public class BannerApp {
 
     public static void main(String[] args) {
+        String[][] banner = {
+            getPatternO(),
+            getPatternP(),
+            getPatternS()
+        };
 
-        System.out.println(String.join("",
-                " *****   ",
-                " *****   ",
-                " *****   ",
-                " *****   "
-        ));
+        renderBanner(banner);
+    }
 
-        System.out.println(String.join("",
-                "*     *  ",
-                "*     *  ",
-                "*     *  ",
-                "*     *  "
-        ));
+    public static String[] getPatternO() {
+        return new String[] {
+            "  *** ",
+            " * * ",
+            " * * ",
+            " * * ",
+            "  *** "
+        };
+    }
 
-        System.out.println(String.join("",
-                "*     *  ",
-                "*     *  ",
-                "*     *  ",
-                "*     *  "
-        ));
+    public static String[] getPatternP() {
+        return new String[] {
+            " ***** ",
+            " * *",
+            " ***** ",
+            " * ",
+            " * "
+        };
+    }
 
-        System.out.println(String.join("",
-                "*     *  ",
-                "*     *  ",
-                "*     *  ",
-                "*     *  "
-        ));
+    public static String[] getPatternS() {
+        return new String[] {
+            "  **** ",
+            " * ",
+            "  *** ",
+            "     * ",
+            " **** "
+        };
+    }
 
-        System.out.println(String.join("",
-                "*     *  ",
-                "*     *  ",
-                "*     *  ",
-                "*     *  "
-        ));
-
-        System.out.println(String.join("",
-                " *****   ",
-                " *****   ",
-                " *****   ",
-                " *****   "
-        ));
+    public static void renderBanner(String[][] letters) {
+        int height = letters[0].length;
+        for (int i = 0; i < height; i++) {
+            for (String[] letter : letters) {
+                System.out.print(letter[i] + "  ");
+            }
+            System.out.println();
+        }
     }
 }
