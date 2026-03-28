@@ -1,47 +1,67 @@
-public class OOPSBannerApp {
+import java.util.ArrayList;
+import java.util.List;
+
+public class BannerApp {
 
     public static void main(String[] args) {
+        List<CharacterPatternMap> bannerData = new ArrayList<>();
+        
+        bannerData.add(new CharacterPatternMap('O', new String[]{
+            "  *** ",
+            " * * ",
+            " * * ",
+            " * * ",
+            "  *** "
+        }));
+        
+        bannerData.add(new CharacterPatternMap('P', new String[]{
+            " ***** ",
+            " * *",
+            " ***** ",
+            " * ",
+            " * "
+        }));
+        
+        bannerData.add(new CharacterPatternMap('S', new String[]{
+            "  **** ",
+            " * ",
+            "  *** ",
+            "     * ",
+            " **** "
+        }));
 
-        System.out.println(String.join("",
-                " *****   ",
-                " *****   ",
-                " *****   ",
-                " *****   "
-        ));
+        displayBanner(bannerData);
+    }
 
-        System.out.println(String.join("",
-                "*     *  ",
-                "*     *  ",
-                "*     *  ",
-                "*     *  "
-        ));
+    public static void displayBanner(List<CharacterPatternMap> patterns) {
+        if (patterns.isEmpty()) return;
 
-        System.out.println(String.join("",
-                "*     *  ",
-                "*     *  ",
-                "*     *  ",
-                "*     *  "
-        ));
+        int height = patterns.get(0).getPattern().length;
 
-        System.out.println(String.join("",
-                "*     *  ",
-                "*     *  ",
-                "*     *  ",
-                "*     *  "
-        ));
+        for (int i = 0; i < height; i++) {
+            StringBuilder line = new StringBuilder();
+            for (CharacterPatternMap cp : patterns) {
+                line.append(cp.getPattern()[i]).append("  ");
+            }
+            System.out.println(line.toString());
+        }
+    }
 
-        System.out.println(String.join("",
-                "*     *  ",
-                "*     *  ",
-                "*     *  ",
-                "*     *  "
-        ));
+    static class CharacterPatternMap {
+        private char character;
+        private String[] pattern;
 
-        System.out.println(String.join("",
-                " *****   ",
-                " *****   ",
-                " *****   ",
-                " *****   "
-        ));
+        public CharacterPatternMap(char character, String[] pattern) {
+            this.character = character;
+            this.pattern = pattern;
+        }
+
+        public char getCharacter() {
+            return character;
+        }
+
+        public String[] getPattern() {
+            return pattern;
+        }
     }
 }
